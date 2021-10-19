@@ -1,4 +1,8 @@
 {
     "$schema": "https://on.cypress.io/cypress.schema.json",
-    "baseUrl": "http://automationpractice.com"
+    "baseUrl": "http://automationpractice.com",
+    "reporter": "cypress-multi-reporters",
+    "reporterOptions": {
+        "configFile": "reporter-config.json"
+    }
 }
