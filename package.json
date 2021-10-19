@@ -10,8 +10,8 @@
     "report:mocha": "marge index.json",
     "report:clean": "rimraf mochawesome-report index.json"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["cypress", "automation", "automationpractice", "agilizei", "bootcamp"],
+  "author": "Davison Alves da Silva",
   "license": "ISC",
   "devDependencies": {
     "cypress": "^8.6.0",
