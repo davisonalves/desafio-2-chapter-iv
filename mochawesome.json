@@ -1,0 +1,111 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2021-10-19T19:54:19.455Z",
+    "end": "2021-10-19T19:54:50.916Z",
+    "duration": 31461,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "5a880a87-bfbb-42e2-aa12-b693e02c246e",
+      "title": "",
+      "fullFile": "cypress/integration/cadastro-de-clientes.spec.js",
+      "file": "cypress/integration/cadastro-de-clientes.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "ba801ff2-708e-43c1-afdb-c064ebcdcc12",
+          "title": "Cadastro de clientes",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Quando eu informar os dados do cliente e finalizar, então o cadastro deve ser efetuado",
+              "fullTitle": "Cadastro de clientes Quando eu informar os dados do cliente e finalizar, então o cadastro deve ser efetuado",
+              "timedOut": null,
+              "duration": 31391,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/index.php?controller=authentication&back=my-account');\n/*Minhas asserções estavam dando erro algumas vezes por essa requisição demorar, então interceptei ela e fiz um wait para que antes das asserções o cypress espere essa requisição acabar*/\ncy.intercept({\n  method: 'POST',\n  pathname: '/index.php'\n}).as('postIndex');\n/* YOUR PERSONAL INFORMATION */\ncy.get('input[name=email_create]').type(user.email);\ncy.get('button#SubmitCreate').click();\ncy.wait('@postIndex');\ncy.url().should('contain', 'account-creation');\ncy.get('input#id_gender1').check();\ncy.get('input#customer_firstname').type(user.firstName);\ncy.get('input#customer_lastname').type(user.lastName);\n/*O email que veio preenchido deve ser o mesmo que eu preenchi na tela anterior*/\ncy.get('input[name=email]').should('have.value', user.email);\ncy.get('input#passwd').type(user.passwd);\ncy.get('select#days').select('26');\ncy.get('select#months').select('February');\ncy.get('select#years').select('2001');\ncy.get('input[type=checkbox]').check();\n/* YOUR ADDRESS */\ncy.get('input#company').type(faker.company.companyName());\ncy.get('input#address1').type(faker.address.streetAddress());\ncy.get('input#city').type(faker.address.city());\ncy.get('input#address2').type(faker.address.secondaryAddress());\ncy.get('input#postcode').type('01352'); //tentei colocar esse dado com Faker mas ele sempre gera um zipcode maior do que 5 dígitos e a página da erro ao finalizar cadastro alegando que é um zipcode fora do formato esperado, então mockei um zipcode\ncy.get('select#id_country').select('United States');\ncy.get('select#id_state').select(faker.address.state());\ncy.get('input#phone_mobile').type(faker.phone.phoneNumberFormat());\ncy.get('input#alias').type(faker.address.streetAddress());\ncy.get('button#submitAccount').click();\n/*Quando finalizo meu cadastro, deve aparecer um botão para conferir minhas informações*/\ncy.get('a[title=Information]').should('be.visible');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `a[title=Information]`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `a[title=Information]`, but never found it.\n    at Context.eval (http://automationpractice.com/__cypress/tests?p=cypress/integration/cadastro-de-clientes.spec.js:153:36)",
+                "diff": null
+              },
+              "uuid": "e40f47ba-758a-43af-8709-96c8b23932cc",
+              "parentUUID": "ba801ff2-708e-43c1-afdb-c064ebcdcc12",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "e40f47ba-758a-43af-8709-96c8b23932cc"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 31391,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.3.1"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "mochawesome-report",
+        "quiet": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.2.0"
+    }
+  }
+}
