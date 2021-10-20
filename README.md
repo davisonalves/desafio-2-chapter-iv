@@ -29,9 +29,9 @@ Antes de prosseguir, primeiro certifique-se de ter instalado:
 
 
 **Show! agora vamos aos passos para que você consiga executar na sua máquina!**
-- Para clonar o repositório, rode em seu terminal o comando `git clone https://github.com/davisonalves/desafio-2-chapter-iv.git`
-- Para instalar o Cypress e as demais depêndencias de desenvolvimento rode o comando `npm install`
-- Para executar os testes em modo headless rode o comando `npm run cy:run`
+- Para clonar o repositório, rode o comando `git clone https://github.com/davisonalves/desafio-2-chapter-iv.git`
+- Para instalar o Cypress e as demais dependências de desenvolvimento, rode o comando `npm install`
+- Para executar os testes em modo headless, rode o comando `npm run cy:run`
 - Para gerar e agrupar os relatórios você deve rodar os comandos `npm run report:merge` e em seguida `npm run report:mocha`
 - Para limpar os arquivos gerados nos relatórios você pode rodar também `npm run report:clean`
 
