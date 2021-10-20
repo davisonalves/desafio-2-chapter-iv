@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2021-10-20T19:15:16.930Z",
-    "end": "2021-10-20T19:15:40.241Z",
-    "duration": 23311,
+    "start": "2021-10-20T19:19:41.017Z",
+    "end": "2021-10-20T19:20:00.559Z",
+    "duration": 19542,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "4e06004e-3aec-42e1-9c6c-13d57607f23f",
+      "uuid": "38e4c749-3e2e-480d-b69a-5ec3ff34363c",
       "title": "",
       "fullFile": "cypress/integration/cadastro-de-clientes.spec.js",
       "file": "cypress/integration/cadastro-de-clientes.spec.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "b298b8b6-4a62-4f88-936f-395bfea203e9",
+          "uuid": "27f27fe6-1ab6-4895-99e3-01ab1b80f436",
           "title": "Cadastro de clientes",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "Quando eu informar os dados do cliente e finalizar, então o cadastro deve ser efetuado",
               "fullTitle": "Cadastro de clientes Quando eu informar os dados do cliente e finalizar, então o cadastro deve ser efetuado",
               "timedOut": null,
-              "duration": 23066,
+              "duration": 19272,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "cy.visit('/index.php?controller=authentication&back=my-account');\n/*Minhas asserções estavam dando erro algumas vezes por essa requisição demorar, então interceptei ela e fiz um wait para que antes das asserções o cypress espere essa requisição acabar*/\ncy.intercept({\n  method: 'POST',\n  pathname: '/index.php'\n}).as('postIndex');\n/* YOUR PERSONAL INFORMATION */\ncy.get('input[name=email_create]').type(user.email);\ncy.get('button#SubmitCreate').click();\ncy.wait('@postIndex');\ncy.url().should('contain', 'account-creation');\ncy.get('input#id_gender1').check();\ncy.get('input#customer_firstname').type(user.firstName);\ncy.get('input#customer_lastname').type(user.lastName);\n/*O email que veio preenchido deve ser o mesmo que eu preenchi na tela anterior*/\ncy.get('input[name=email]').should('have.value', user.email);\ncy.get('input#passwd').type(user.passwd);\ncy.get('select#days').select('26');\ncy.get('select#months').select('February');\ncy.get('select#years').select('2001');\ncy.get('input[type=checkbox]').check();\n/* YOUR ADDRESS */\ncy.get('input#company').type(faker.company.companyName());\ncy.get('input#address1').type(faker.address.streetAddress());\ncy.get('input#city').type(faker.address.city());\ncy.get('input#address2').type(faker.address.secondaryAddress());\ncy.get('input#postcode').type('01352'); //tentei colocar esse dado com Faker mas ele sempre gera um zipcode maior do que 5 dígitos e a página da erro ao finalizar cadastro alegando que é um zipcode fora do formato esperado, então mockei um zipcode\ncy.get('select#id_country').select('United States');\ncy.get('select#id_state').select(faker.address.state());\ncy.get('input#phone_mobile').type(faker.phone.phoneNumberFormat());\ncy.get('input#alias').type(faker.address.streetAddress());\ncy.get('button#submitAccount').click();\n/*Quando finalizo meu cadastro, deve aparecer um botão para conferir minhas informações*/\ncy.get('a[title=Information]').should('be.visible');",
               "err": {},
-              "uuid": "53d9a63a-3262-4781-b693-4cce5453cbf7",
-              "parentUUID": "b298b8b6-4a62-4f88-936f-395bfea203e9",
+              "uuid": "695cf88a-6c81-480c-9768-199af75747dd",
+              "parentUUID": "27f27fe6-1ab6-4895-99e3-01ab1b80f436",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "53d9a63a-3262-4781-b693-4cce5453cbf7"
+            "695cf88a-6c81-480c-9768-199af75747dd"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 23066,
+          "duration": 19272,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
